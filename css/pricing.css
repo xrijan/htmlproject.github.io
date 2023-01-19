@@ -1,0 +1,115 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+*,::before,::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins",sans-serif;
+}
+.fs-16{
+    font-size: 16px;
+}
+.fs-22{
+    font-size: 22px;
+}
+.container{
+    min-height: 100vh;
+    display: grid;
+    align-items: center;
+    /* max-width: 1140px; */
+    margin: auto;
+}
+.container .cards{
+    display: flex;
+    flex-wrap: wrap;
+}
+.container .card{
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    transition: all .5s ease-in-out;
+    margin-top: 20px;
+    padding: 0 0.7rem;
+}
+.container .card .top{
+    border: 2px solid;
+    border-radius: 0 30px 0 30px;
+    border-bottom: 2px dashed;
+    border-color: #97979770;
+    padding: 1.5rem;
+    color: #1c2f50;
+    transition: all .5s ease-in-out;
+}
+.container .card .top .price-title h2{
+    font-size: 28px;
+    font-weight: 700;
+}
+.container .card .top .price-tag h2{
+    font-size: 34px;
+    font-weight: 700;
+}
+.container .card .top .price-tag h2 sup{
+    vertical-align: baseline;
+    top: -0.5em;
+    position: relative;
+}
+.container .card .bottom{
+    border: 2px solid;
+    border-radius: 0 0px 0 30px;
+    border-top: none;
+    border-color: #97979770;
+    padding: 1.5rem;
+    color: #1c2f50;
+}
+.card .bottom ul{
+    list-style: none;
+}
+.card .bottom ul li{
+    font-size: 16px;
+    line-height: 2rem;
+}
+.card .bottom ul li i{
+    margin-right: 0.5rem;
+}
+.card .button a{
+    width: 100%;
+    text-align: center;
+    background: #1c2f50;
+    color: #fff;
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: 0.3s all ease-in-out;
+}
+
+.card .button a:hover{
+    background: #182741;
+}
+.card .button .secondary-btn{
+    background: #2fb4ae;
+}
+.card .button .secondary-btn:hover{
+    background: #2fa59f;
+}
+.card:hover .top{
+    background: #2fb4ae;
+}
+.change-border{
+    animation: change-border 2s linear infinite;
+}
+@keyframes change-border{
+    0%,100%{
+        border-color: #2fb4ae;
+    }
+    50%{
+        border-color: #1c2f50;
+    }
+}
+@media (min-width: 992px) {
+
+    .card {
+        flex: 0 0 auto;
+        width: 33.33333333% !important;
+    }
+}

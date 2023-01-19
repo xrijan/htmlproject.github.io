@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/registation.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+     <script>
+         // Initialize Firebase
+     var firebaseConfig = {
+     apiKey: "AIzaSyCAOOH1oU2qyuGjX2rH3277sn27DKhKhtU",
+     authDomain: "teamprojecthtml.firebaseapp.com",
+     databaseURL: "https://teamprojecthtml-default-rtdb.firebaseio.com",
+     projectId: "teamprojecthtml",
+     storageBucket: "teamprojecthtml.appspot.com",
+     messagingSenderId: "900796617520",
+     appId: "1:900796617520:web:92b0e5dba47a55364a2ef5",
+     measurementId: "G-ZW85PDNKT4"
+   };
+ 
+         firebase.initializeApp(firebaseConfig);
+ 
+ 
+     function SignUp () {
+     var email = document.getElementById("email").value;
+     var password = document.getElementById("password").value;
+  
+     firebase.auth().createUserWithEmailAndPassword(email, password)
+             .then(cred => {
+                 console.log(cred.user);
+             })
+             .catch(error => {
+                 // Handle Errors here.
+                 var errorCode = error.code;
+                 var errorMessage = error.message;
+                 console.log(errorCode, errorMessage);
+             });
+ 
+     firebase.auth().onAuthStateChanged((user) => {
+         if (user) {
+          window.location.href = "video.html";
+         } else {
+             console.log("User logged out.");
+         }
+     }); }
+ 
+ 
+     function SignIn() {
+     var email = document.getElementById("email").value;
+     var password = document.getElementById("password").value;
+ 
+     firebase.auth().signInWithEmailAndPassword(email, password)
+                 .then(cred => {
+                     console.log(cred.user);
+                 })
+                 .catch(error => {
+                 // Handle Errors here.
+                 var errorCode = error.code;
+                 var errorMessage = error.message;
+                 console.log(errorCode, errorMessage);
+             });
+ 
+ 
+         firebase.auth().onAuthStateChanged((user) => {
+         if (user) {
+          window.location.href = "video.html";
+         } else {
+             console.log("SignIN logged out.");
+         }
+     });
+     }
+     </script>
+   </head>
+
+   
+<body>
+  <div class="container">
+    <div class="title">Registration</div>
+    <div class="content">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="email" placeholder="Enter your email" id = "email" name="email" >
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" placeholder="Enter your password" id = "password" name="password">
+          </div>
+        </div>
+        <button  class = "button input" type="submit" onclick="SignUp()">Sign Up</button>
+    </div>
+  </div>
+</body>
+</html>

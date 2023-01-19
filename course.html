@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Webpage Design</title>
+    <link rel="stylesheet" href="css/course.css">
+    
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script>
+        // Initialize Firebase
+    var firebaseConfig = {
+    apiKey: "AIzaSyCAOOH1oU2qyuGjX2rH3277sn27DKhKhtU",
+    authDomain: "teamprojecthtml.firebaseapp.com",
+    databaseURL: "https://teamprojecthtml-default-rtdb.firebaseio.com",
+    projectId: "teamprojecthtml",
+    storageBucket: "teamprojecthtml.appspot.com",
+    messagingSenderId: "900796617520",
+    appId: "1:900796617520:web:92b0e5dba47a55364a2ef5",
+    measurementId: "G-ZW85PDNKT4"
+  };
+
+        firebase.initializeApp(firebaseConfig);
+
+
+    function SignUp () {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+ 
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then(cred => {
+                console.log(cred.user);
+            })
+            .catch(error => {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log(errorCode, errorMessage);
+            });
+
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+         window.location.href = "video.html";
+        } else {
+            console.log("User logged out.");
+        }
+    }); }
+
+
+    function SignIn() {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+                .then(cred => {
+                    console.log(cred.user);
+                })
+                .catch(error => {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log(errorCode, errorMessage);
+            });
+
+
+        firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+         window.location.href = "video.html";
+        } else {
+            console.log("SignIN logged out.");
+        }
+    });
+    }
+    </script>
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+        </div> 
+        <div class="content">
+            <h1>Web Design & <br><span>Development</span> <br>Course</h1>
+            <p class="par">Web development is the work involved in developing a website for the Internet (World Wide Web)  <br>
+                 or an intranet (a private network). Web development can range from developing a simple single <br>
+                 static page of plain text to complex web applications, electronic businesses, <br>
+                 and social network services.</p>
+
+                <button class="cn"><a href="pricing.html">Buy</a></button>
+
+                <div class="form">
+                    <input type="email" id="email" placeholder="Email">
+                    <input type="password" id="password" placeholder="Password">
+                    <button class="btnn" onclick="SignIn()">Login</button>
+                    <p class="link">Don't have an account<br>
+                    <a href="registation.html">Sign up </a> here</a></p>
+                </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</body>
+</html>
